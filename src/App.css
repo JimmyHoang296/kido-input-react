@@ -1,38 +1,283 @@
-.App {
-  text-align: center;
+
+/* global */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* general */
+body {
+  background-color: #fad961;
+  background-image: linear-gradient(90deg, #fad961 0%, #f76b1c 100%);
+  background-size: cover;
+  background-attachment: fixed;
+  height: 100vh;
+  margin: 0;
+  padding-top: 30px;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  font-family: Arial, sans-serif;
+  color: #fff;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  padding-bottom: 50px;
+}
+button,
+input {
+  display: block;
+  outline: none;
+  border: 1px;
+  border-color: none;
+  padding: 5px 20px;
+
+  font-size: 18px;
+  font-family: "Montserrat", sans-serif;
+  color: hsl(132, 56%, 18%);
+}
+
+
+input {
+  background: var(--color-bg-main);
+
+  margin: 5px 0px;
+
+  font-weight: 500;
+  border-radius: 10px;
+}
+
+button {
+  border-radius: 40px;
+  font-weight: 700;
+  background: hsla(39, 99%, 47%, 0.8);
+  cursor: pointer;
+  animation: ease-in-out 0.2s;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+/* login form */
+.login-form {
+  max-width: 300px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+}
+
+.login-form--title {
+  text-align: center;
+  color: #333;
+  margin-bottom: 40px;
+}
+.login-form input {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.login-form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.login-form button:hover {
+  background-color: #45a049;
+}
+
+.caution {
+  text-align: center;
+  color: red;
+  margin-top: 10px;
+}
+
+
+/* input section */
+.inputSection h2{
+  margin-bottom: 20px;
+}
+
+/* search Date */
+
+.searchDate{
+  background-color: hsla(0, 0%, 98%,0.2);
+  border-radius: 10px;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.searchDate select{
+  
+  width: 100px;
+  border-radius: 10px;
+  border: none;
+  padding: 10px 10px;
+  outline: none;
+  font-size: 18px;
+
+}
+.searchDate option{
+  display: block;
+  padding: 10px;
+}
+
+.searchDate input{
+  background-color: hsl(0, 0%, 100%);
+  padding: 10px;
+}
+
+/* cash list */
+.cash{
+  padding: 15px 10px;
+  margin-bottom: 15px;
+  background-color: #f0f0f080;
+  color: #000000;
+  border-radius: 10px;
+}
+.cash-list{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Creates two equally sized columns */
+  gap: 10px; /* Gap between grid items */
+  grid-column-gap: 40px;
+}
+
+.cash-input{
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+.cash-input label {
+  width: 150px;
+}
+.cash-input input{
+  background-color: #f0f0f0;
+  text-align: right;
+  font-size: 14px;
+  width: 160px;
+}
+.cash-list span{
+  color: black;
+  position: relative;
+  left: -15px;
+  font-size: 14px;
 }
 
-.App-link {
-  color: #61dafb;
+/* expense */
+.expense{
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  padding: 15px 10px;
+  margin-bottom: 10px;
+  background-color: #f0f0f080;
+  border-radius: 10px;
+}
+.expense div{
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  gap:10px;
+}
+.expense input{
+  font-size: 14px;
+  background-color: #f0f0f0;
+  text-align: right;
+  font-size: 14px;
+  display: block;  
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* combobox */
+.combobox {
+  position: relative;
+  font-size: 14px;
+}
+
+.combobox input {
+  padding: 0px 12px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  max-width: 250px;
+}
+
+.combobox .options-list {
+  position: absolute;
+  z-index: 99;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  max-height: 200px;
+  overflow-y: auto;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+  color: #333;
+}
+
+.combobox li {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.combobox li:hover {
+  background-color: #f0f0f0;
+}
+
+.combobox [name="Loại phí"] {
+  width: 90px;
+}
+
+.combobox [name="Nhóm chi phí"] {
+  width: 250px;
+}
+
+.combobox [name="Chi phí"] {
+  width: 200px;
+}
+
+.expense [name="unit"] {
+  width: 100px;
+  background: none;
+
+}
+.expense [name="price"] {
+  width: 100px;
+}
+.expense [name="qty"] {
+  width: 100px;
+}
+.expense [name="total"] {
+  width: 150px;
+  background: none;
+}
+.expense [name="note"] {
+  width: 350px;
+}
+
+/* modal */
+.modal{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
