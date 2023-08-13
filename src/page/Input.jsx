@@ -19,8 +19,6 @@ function Input({ expenseList, user }) {
     { id: "cashEnd", name: "Tiền cuối ca" }
   ];
 
-
-
   const [expenses, setExpenses] = useState([])
   const [cashs, setCashs] = useState(
     cashList.map(item => { var mapItem = {}; return mapItem[item.id] = 0 }))

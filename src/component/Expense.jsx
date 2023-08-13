@@ -86,7 +86,7 @@ function Expense({ expenseList, expenseValue, handleChange }) {
         />
         <ComboBox
           name="Nhóm chi phí"
-          items={groups}
+          items={group}
           selectedItem={expense.group}
           onSelectItem={handleSelectGroup}
         />

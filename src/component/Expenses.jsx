@@ -1,9 +1,9 @@
 
-import React, { useEffect } from "react";
+import React from "react";
 import Expense from "./Expense";
 
 function Expenses({ expenseList, shift, expenses, setExpenses }) {
-
+  console.log ('render')
   const addExpense = () => {
     if (expenses.length > 0 && expenses[expenses.length - 1].group === "") {
       return;
