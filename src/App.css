@@ -14,7 +14,7 @@ body {
   background-attachment: fixed;
   height: 100vh;
   margin: 0;
-  padding-top: 30px;
+  padding: 30px 10px;
   display: flex;
   justify-content: center;
   font-family: Arial, sans-serif;
@@ -107,7 +107,7 @@ button:hover {
 
 /* input section */
 .inputSection h2{
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 /* search Date */
@@ -117,6 +117,7 @@ button:hover {
   border-radius: 10px;
   padding: 10px 20px;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 20px;
 }
@@ -155,6 +156,11 @@ button:hover {
   gap: 10px; /* Gap between grid items */
   grid-column-gap: 40px;
 }
+@media (max-width: 390px) {
+  .cash-list{
+    grid-template-columns: repeat(1, 1fr)
+  }
+}
 
 .cash-input{
   display: flex;
@@ -190,9 +196,11 @@ button:hover {
 .expense div{
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: left;
   gap:10px;
 }
+
 .expense input{
   font-size: 14px;
   background-color: #f0f0f0;
@@ -256,10 +264,10 @@ button:hover {
 
 }
 .expense [name="price"] {
-  width: 100px;
+  width: 90px;
 }
 .expense [name="qty"] {
-  width: 100px;
+  width: 90px;
 }
 .expense [name="total"] {
   width: 150px;

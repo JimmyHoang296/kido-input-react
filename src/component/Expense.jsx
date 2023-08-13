@@ -56,8 +56,11 @@ function Expense({ expenseList, expenseValue, handleChange }) {
     let newTotal = expense.total;
     var newValue = value.replace(/\D/g, ''); // Remove non-digit characters
 
-    if (isNaN(newValue) && inputName !== "note" && inputName !== "source") {
-      return;
+    if (inputName === "note") {
+      let updatedExpense = { ...expense, [inputName]: value }
+      setExpense(updatedExpense);
+      handleChange(updatedExpense);
+      return
     }
     if (inputName === "price") {
       newTotal = newValue * expense.qty.toString().replace(/\D/g, '') * 1;
