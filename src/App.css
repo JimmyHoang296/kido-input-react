@@ -156,7 +156,7 @@ button:hover {
   gap: 10px; /* Gap between grid items */
   grid-column-gap: 40px;
 }
-@media (max-width: 390px) {
+@media (max-width: 450px) {
   .cash-list{
     grid-template-columns: repeat(1, 1fr)
   }
