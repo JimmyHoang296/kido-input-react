@@ -10,7 +10,7 @@ function addStyle(expenseValue) {
 function Expense({ expenseList, expenseValue, handleChange }) {
   const [expense, setExpense] = useState(addStyle(expenseValue));
   const [group, setGroup] = useState(
-    expenseList.filter(item => item.type === "Trong ca").map(item => item.group).filter((item, index) => groups.indexOf(item) === index)
+    expenseList.filter(item => item.type === "Trong ca").map(item => item.group)
   )
   const [items, setItems] = useState(
     expenseList
@@ -24,7 +24,7 @@ function Expense({ expenseList, expenseValue, handleChange }) {
 
   let groups = expenseList.map((item) => item.group);
   groups = groups.filter((item, index) => groups.indexOf(item) === index);
-  
+  setGroup(groups)
   function handleSelectGroup(group) {
     let updatedExpense = { ...expense, group: group, name: "", unit: "" };
     setItems(
