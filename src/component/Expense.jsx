@@ -7,10 +7,17 @@ function addStyle(expenseValue) {
   expenseValue.total = isNaN(expenseValue.total) ? expenseValue.total : Number(expenseValue.total).toLocaleString('en-US', { minimumIntegerDigits: 1, useGrouping: true })
   return expenseValue
 }
+
+function getUniqueGroup(expenseList){
+  let groups = expenseList.map((item) => item.group);
+  groups = groups.filter((item, index) => groups.indexOf(item) === index);
+  return groups
+}
+
 function Expense({ expenseList, expenseValue, handleChange }) {
   const [expense, setExpense] = useState(addStyle(expenseValue));
   const [group, setGroup] = useState(
-    expenseList.filter(item => item.type === "Trong ca").map(item => item.group).filter((item, index) => groups.indexOf(item) === index)
+    getUniqueGroup(expenseList.filter(item => item.type === "Trong ca"))
   )
   const [items, setItems] = useState(
     expenseList
@@ -22,8 +29,7 @@ function Expense({ expenseList, expenseValue, handleChange }) {
     setExpense(addStyle(expenseValue))
   }, [expenseValue])
 
-  let groups = expenseList.map((item) => item.group);
-  groups = groups.filter((item, index) => groups.indexOf(item) === index);
+
   
   function handleSelectGroup(group) {
     let updatedExpense = { ...expense, group: group, name: "", unit: "" };
@@ -38,7 +44,7 @@ function Expense({ expenseList, expenseValue, handleChange }) {
 
   function handleSelectType(type) {
     let updatedExpense = { ...expense, type, group: "", name: "", unit: "" }
-    setGroup(expenseList.filter(item => item.type === type).map(item => item.group).filter((item, index) => groups.indexOf(item) === index))
+    setGroup(getUniqueGroup(expenseList.filter(item => item.type === type)))
     setExpense(updatedExpense)
     handleChange(updatedExpense)
   }
