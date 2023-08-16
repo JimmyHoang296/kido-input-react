@@ -1,11 +1,30 @@
 import React, { useEffect, useState } from "react";
 import ComboBox from "./Combobox";
 
-function addStyle(expenseValue) {
-  expenseValue.qty = isNaN(expenseValue.qty) ? expenseValue.qty : Number(expenseValue.qty).toLocaleString('en-US', { minimumIntegerDigits: 1, useGrouping: true })
-  expenseValue.price = isNaN(expenseValue.price) ? expenseValue.price : Number(expenseValue.price).toLocaleString('en-US', { minimumIntegerDigits: 1, useGrouping: true })
-  expenseValue.total = isNaN(expenseValue.total) ? expenseValue.total : Number(expenseValue.total).toLocaleString('en-US', { minimumIntegerDigits: 1, useGrouping: true })
-  return expenseValue
+const formatInput = (value) => {
+  const formattedValue = value.toString().replace(/[^\d.]/g, '');
+  const parts = formattedValue.split('.');
+
+  if (parts.length > 2) {
+    parts[0] = parts[0] + parts[1];
+    parts.splice(1, 1);
+  }
+
+  if (parts.length > 1) {
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    parts[1] = parts[1].slice(0, 2);
+  } else {
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  }
+
+  return parts.join('.');
+};
+
+function addStyle(expense){
+  expense.price = isNaN(expense.price) ? expense.price : formatInput(expense.price)
+  expense.qty = isNaN(expense.qty) ? expense.qty : formatInput(expense.qty)
+  expense.total = isNaN(expense.total) ? expense.total : formatInput(expense.total)
+  return expense
 }
 
 function getUniqueGroup(expenseList){
@@ -25,10 +44,10 @@ function Expense({ expenseList, expenseValue, handleChange }) {
       .map((item) => item.name)
   );
 
+  
   useEffect(() => {
     setExpense(addStyle(expenseValue))
   }, [expenseValue])
-
 
   
   function handleSelectGroup(group) {
@@ -59,9 +78,8 @@ function Expense({ expenseList, expenseValue, handleChange }) {
   const handleChangeInput = (event) => {
     let inputName = event.target.name;
     let value = event.target.value;
-    let newTotal = expense.total;
-    var newValue = value.replace(/\D/g, ''); // Remove non-digit characters
-
+    let newTotal
+    var newValue = formatInput(value)
     if (inputName === "note") {
       let updatedExpense = { ...expense, [inputName]: value }
       setExpense(updatedExpense);
@@ -69,16 +87,32 @@ function Expense({ expenseList, expenseValue, handleChange }) {
       return
     }
     if (inputName === "price") {
-      newTotal = newValue * expense.qty.toString().replace(/\D/g, '') * 1;
+      newTotal = calculateMultiplication(value, expense.qty);
     }
     if (inputName === "qty") {
-      newTotal = newValue * expense.price.toString().replace(/\D/g, '') * 1;
+      newTotal = calculateMultiplication(expense.price, value)
     }
-    var formattedValue = Number(newValue).toLocaleString('en-US', { minimumIntegerDigits: 1, useGrouping: true });
-    let updatedExpense = { ...expense, [inputName]: formattedValue, total: newTotal };
+    
+    let updatedExpense = { ...expense, [inputName]: newValue, total: newTotal };
+    
     setExpense(updatedExpense);
     handleChange(updatedExpense);
   };
+  
+  const calculateMultiplication = (price, total) => {
+    const parsedInput1 = parseFloat(price.replace(/[^\d.]/g, ''));
+    const parsedInput2 = parseFloat(total.replace(/[^\d.]/g, ''));
+
+    if (!isNaN(parsedInput1) && !isNaN(parsedInput2)) {
+      const multiplicationResult = (parsedInput1 * parsedInput2).toLocaleString('en-US', {
+        maximumFractionDigits: 0,
+      });
+      return (multiplicationResult);
+    } else {
+      return ('');
+    }
+  };
+  
 
   const numberWithCommas = (x) => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -138,7 +172,7 @@ function Expense({ expenseList, expenseValue, handleChange }) {
           value={numberWithCommas(expense.total)}
           placeholder="tổng"
           disabled
-        />
+          />
         <input
           autoComplete="off"
           type="text"

@@ -216,7 +216,7 @@ button:hover {
 }
 
 .combobox input {
-  padding: 0px 12px;
+  padding: 5px 12px;
   border: 1px solid #ccc;
   border-radius: 10px;
   max-width: 250px;
