@@ -125,7 +125,7 @@ function Input({ expenseList, user }) {
 
   return (
     <div className="inputSection">
-      <h2>{user} nhập liệu Kido</h2>
+      <h2>{user} nhập liệu BAKIDO2</h2>
       <SearchDate
         onSearch={handleSearch}
       />
@@ -146,7 +146,7 @@ function Input({ expenseList, user }) {
             setExpenses={setExpenses}
           />
           {getToday() === shift.slice(0, 6) && (
-            <button onClick={handleSubmit}> Submit</button>
+            <button onClick={handleSubmit} className="submit-btn"> Submit</button>
           )}
         </>
       )}
