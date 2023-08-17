@@ -325,3 +325,10 @@ button:hover {
   justify-content: center;
   align-items: center;
 }
+
+/* submit btn */
+.submit-btn{
+  position: relative;
+  top: -26px;
+  left: 200px;
+}
