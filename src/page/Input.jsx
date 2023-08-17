@@ -125,14 +125,14 @@ function Input({ expenseList, user }) {
 
   return (
     <div className="inputSection">
-      <h2>{user} Nhập thông tin bánh mỳ Kido</h2>
+      <h2>{user} nhập liệu Kido</h2>
       <SearchDate
         onSearch={handleSearch}
       />
       {isMainDisplay && (
         <>
           <h2>
-            Nhập thông tin {shift.slice(6, 8) === "c1" ? "ca 1" : "ca 2"} ngày
+            {shift.slice(6, 8) === "c1" ? "Ca 1" : "Ca 2"} ngày
             {` ${shift.slice(0, 2)}/${shift.slice(2, 4)}/20${shift.slice(
               4,
               6

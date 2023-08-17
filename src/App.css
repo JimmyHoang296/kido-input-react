@@ -1,4 +1,3 @@
-
 /* global */
 * {
   box-sizing: border-box;
@@ -30,17 +29,14 @@ input {
   border-color: none;
   padding: 5px 20px;
 
-  font-size: 18px;
+  font-size: 14px;
   font-family: "Montserrat", sans-serif;
   color: hsl(132, 56%, 18%);
 }
 
-
 input {
   background: var(--color-bg-main);
-
   margin: 5px 0px;
-
   font-weight: 500;
   border-radius: 10px;
 }
@@ -104,16 +100,15 @@ button:hover {
   margin-top: 10px;
 }
 
-
 /* input section */
-.inputSection h2{
-  margin-bottom: 10px;
+.inputSection h2 {
+  margin-bottom: 0px;
 }
 
 /* search Date */
 
-.searchDate{
-  background-color: hsla(0, 0%, 98%,0.2);
+.searchDate {
+  background-color: hsla(0, 0%, 98%, 0.2);
   border-radius: 10px;
   padding: 10px 20px;
   display: flex;
@@ -122,47 +117,50 @@ button:hover {
   gap: 20px;
 }
 
-.searchDate select{
-  
-  width: 100px;
+.searchDate select {
+  width: 70px;
   border-radius: 10px;
   border: none;
-  padding: 10px 10px;
+  padding: 5px 10px;
   outline: none;
   font-size: 18px;
-
+  margin-left: 10px;
 }
-.searchDate option{
+.searchDate option {
   display: block;
   padding: 10px;
 }
 
-.searchDate input{
+.searchDate input {
+  width: 150px;
   background-color: hsl(0, 0%, 100%);
-  padding: 10px;
+  padding: 5px;
 }
 
 /* cash list */
-.cash{
+.cash {
   padding: 15px 10px;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
   background-color: #f0f0f080;
   color: #000000;
   border-radius: 10px;
 }
-.cash-list{
+.cash-list {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* Creates two equally sized columns */
-  gap: 10px; /* Gap between grid items */
+  gap: 2px; /* Gap between grid items */
   grid-column-gap: 40px;
 }
 @media (max-width: 450px) {
-  .cash-list{
-    grid-template-columns: repeat(1, 1fr)
+  .cash-list {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .cash-input {
+    justify-content: left;
   }
 }
 
-.cash-input{
+.cash-input {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -170,13 +168,13 @@ button:hover {
 .cash-input label {
   width: 150px;
 }
-.cash-input input{
+.cash-input input {
   background-color: #f0f0f0;
   text-align: right;
   font-size: 14px;
   width: 160px;
 }
-.cash-list span{
+.cash-list span {
   color: black;
   position: relative;
   left: -15px;
@@ -184,7 +182,7 @@ button:hover {
 }
 
 /* expense */
-.expense{
+.expense {
   font-size: 14px;
   display: flex;
   flex-direction: column;
@@ -193,20 +191,20 @@ button:hover {
   background-color: #f0f0f080;
   border-radius: 10px;
 }
-.expense div{
+.expense div {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: left;
-  gap:10px;
+  gap: 10px;
 }
 
-.expense input{
+.expense input {
   font-size: 14px;
   background-color: #f0f0f0;
   text-align: right;
   font-size: 14px;
-  display: block;  
+  display: block;
 }
 
 /* combobox */
@@ -227,7 +225,7 @@ button:hover {
   z-index: 99;
   top: 100%;
   left: 0;
-  width: 100%;
+  width: 200px;
   max-height: 200px;
   overflow-y: auto;
   background-color: #fff;
@@ -261,7 +259,6 @@ button:hover {
 .expense [name="unit"] {
   width: 100px;
   background: none;
-
 }
 .expense [name="price"] {
   width: 90px;
@@ -277,8 +274,47 @@ button:hover {
   width: 350px;
 }
 
+@media (max-width: 450px) {
+  .expense{
+    padding: 5px;
+  }
+  .expense input{
+    font-size: 12px;
+  }
+
+  .combobox [name="Loại phí"] {
+    width: 70px;
+  }
+
+  .combobox [name="Nhóm chi phí"] {
+    width: 100px;
+  }
+
+  .combobox [name="Chi phí"] {
+    width: 120px;
+  }
+
+  .expense [name="unit"] {
+    width: 70px;
+    background: none;
+  }
+  .expense [name="price"] {
+    width: 90px;
+  }
+  .expense [name="qty"] {
+    width: 90px;
+  }
+  .expense [name="total"] {
+    width: 150px;
+    background: none;
+  }
+  .expense [name="note"] {
+    width: 350px;
+  }
+}
+
 /* modal */
-.modal{
+.modal {
   position: fixed;
   top: 0;
   left: 0;

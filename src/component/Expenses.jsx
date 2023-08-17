@@ -3,7 +3,7 @@ import React from "react";
 import Expense from "./Expense";
 
 function Expenses({ expenseList, shift, expenses, setExpenses }) {
-  
+
   const addExpense = () => {
     if (expenses.length > 0 && expenses[expenses.length - 1].group === "") {
       return;
@@ -45,9 +45,8 @@ function Expenses({ expenseList, shift, expenses, setExpenses }) {
   return (
     <div className="input-group expense-list">
       <div className="infor">
-        <h2>Chi phí</h2>
         <h3>
-          Tiền trong ca{" "}
+          Chi trong ca{" "}
           {numberWithCommas(
             expenses.reduce(
               (a, v) => (v.type === "Trong ca" ? a + v.total.toString().replace(/\D/g, '') * 1 : a),
@@ -57,7 +56,7 @@ function Expenses({ expenseList, shift, expenses, setExpenses }) {
           đ
         </h3>
         <h3>
-          Tiền ngoài ca {" "}
+          Chi ngoài ca {" "}
           {numberWithCommas(
             expenses.reduce(
               (a, v) => (v.type === "Ngoài ca" ? a + v.total.toString().replace(/\D/g, '') * 1 : a),
