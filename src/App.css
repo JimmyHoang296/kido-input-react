@@ -214,7 +214,7 @@ button:hover {
 }
 
 .combobox input {
-  padding: 5px 12px;
+  padding: 5px;
   border: 1px solid #ccc;
   border-radius: 10px;
   max-width: 250px;
@@ -283,7 +283,7 @@ button:hover {
   }
 
   .combobox [name="Loại phí"] {
-    width: 70px;
+    width: 60px;
   }
 
   .combobox [name="Nhóm chi phí"] {
