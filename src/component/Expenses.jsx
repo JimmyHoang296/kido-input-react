@@ -1,9 +1,7 @@
-
 import React from "react";
 import Expense from "./Expense";
 
 function Expenses({ expenseList, shift, expenses, setExpenses }) {
-
   const addExpense = () => {
     if (expenses.length > 0 && expenses[expenses.length - 1].group === "") {
       return;
@@ -11,7 +9,7 @@ function Expenses({ expenseList, shift, expenses, setExpenses }) {
     let newID =
       expenses.length < 9
         ? "e0" + (expenses.length + 1)
-        : "e" + expenses.length;
+        : "e" + (expenses.length + 1);
     newID = shift + newID;
 
     let newEx = {
@@ -23,7 +21,7 @@ function Expenses({ expenseList, shift, expenses, setExpenses }) {
       price: "",
       qty: "",
       total: "",
-      note: ""
+      note: "",
     };
     setExpenses((prev) => [...prev, newEx]);
   };
@@ -49,32 +47,38 @@ function Expenses({ expenseList, shift, expenses, setExpenses }) {
           Chi trong ca{" "}
           {numberWithCommas(
             expenses.reduce(
-              (a, v) => (v.type === "Trong ca" ? a + v.total.toString().replace(/\D/g, '') * 1 : a),
-              0
-            )
+              (a, v) =>
+                v.type === "Trong ca"
+                  ? a + v.total.toString().replace(/\D/g, "") * 1
+                  : a,
+              0,
+            ),
           )}
           đ
         </h3>
         <h3>
-          Chi ngoài ca {" "}
+          Chi ngoài ca{" "}
           {numberWithCommas(
             expenses.reduce(
-              (a, v) => (v.type === "Ngoài ca" ? a + v.total.toString().replace(/\D/g, '') * 1 : a),
-              0
-            )
+              (a, v) =>
+                v.type === "Ngoài ca"
+                  ? a + v.total.toString().replace(/\D/g, "") * 1
+                  : a,
+              0,
+            ),
           )}
           đ
         </h3>
       </div>
       {expenses.length > 0
         ? expenses.map((ex, index) => (
-          <Expense
-            key={index}
-            expenseList={expenseList}
-            expenseValue={ex}
-            handleChange={handleChange}
-          />
-        ))
+            <Expense
+              key={index}
+              expenseList={expenseList}
+              expenseValue={ex}
+              handleChange={handleChange}
+            />
+          ))
         : ""}
       <button onClick={addExpense}>Thêm chi phí</button>
     </div>
