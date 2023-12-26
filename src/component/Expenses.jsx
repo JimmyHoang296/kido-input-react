@@ -11,7 +11,7 @@ function Expenses({ expenseList, shift, expenses, setExpenses }) {
     let newID =
       expenses.length < 9
         ? "e0" + (expenses.length + 1)
-        : "e" + expenses.length;
+        : "e" + (expenses.length + 1);
     newID = shift + newID;
 
     let newEx = {
