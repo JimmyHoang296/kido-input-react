@@ -14,7 +14,7 @@ function Input({ expenseList, user }) {
   const cashList = [
     { id: "cashSale", name: "Doanh thu bán hàng" },
     { id: "grab", name: "Doanh thu Grab" },
-    { id: "baemin", name: "Doanh thu Baemin" },
+    { id: "befood", name: "Doanh thu Befood" },
     { id: "shopee", name: "Doanh thu Shopee" },
     { id: "cashEnd", name: "Tiền cuối ca" }
   ];
