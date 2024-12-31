@@ -125,7 +125,7 @@ function Input({ expenseList, user }) {
 
   return (
     <div className="inputSection">
-      <h2>{user} nhập liệu BAKIDO1</h2>
+      <h2>{user} nhập liệu Laisido Phước Hải</h2>
       <SearchDate
         onSearch={handleSearch}
       />
