@@ -48,7 +48,7 @@ export default function Login({ setLogin, setUser, setExpenseList }) {
     return (
         <div>
             <form className='login-form' onSubmit={handleLogin}>
-                <h2 className='login-form--title'>BAKIDO 1</h2>
+                <h2 className='login-form--title'>Laisido Phan Xích Long</h2>
                 <input type="text" placeholder='id' value={id} onChange={e => { setId(e.target.value); setCaution('') }} />
                 <input type="password" placeholder='password' value={password} onChange={e => { setPassword(e.target.value); setCaution('') }} />
                 <button>Đăng nhập</button>
